@@ -1,0 +1,33 @@
+# Static portfolio — no build step
+[build]
+  publish = "."
+
+# Prefer https://razimahmadov.com (configure domain in Netlify first)
+[[redirects]]
+  from = "http://razimahmadov.com/*"
+  to = "https://razimahmadov.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.razimahmadov.com/*"
+  to = "https://razimahmadov.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.razimahmadov.com/*"
+  to = "https://razimahmadov.com/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/og.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
